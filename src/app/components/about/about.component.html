@@ -1,0 +1,50 @@
+<div class="about-container">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Huesos de Madera</h1>
+      <p class="subtitle">Dando vida a la tecnología a través del ensamble artesanal.</p>
+    </div>
+  </section>
+
+  <section class="descripcion">
+    <div class="texto-bloque">
+      <h2>¿Qué es Huesos de Madera?</h2>
+      <p>
+        Somos un taller creativo dedicado a democratizar la robótica y la electrónica. 
+        Creemos que para entender la tecnología, primero hay que tocarla, armarla y ver cómo 
+        cada engrane encaja con el siguiente.
+      </p>
+      <p>
+        Nuestros kits eliminan la barrera del pegamento y las herramientas complicadas, 
+        permitiendo que el enfoque sea 100% en el <strong>aprendizaje y la creatividad</strong>.
+      </p>
+    </div>
+    <div class="img-placeholder">⚙️</div>
+  </section>
+
+  <section class="grid-caracteristicas">
+    <div class="card-info" *ngFor="let item of caracteristicas">
+      <span class="emoji">{{item.icono}}</span>
+      <h3>{{item.titulo}}</h3>
+      <p>{{item.desc}}</p>
+    </div>
+  </section>
+
+  <section class="pasos">
+    <h2>¿Cómo funciona?</h2>
+    <div class="pasos-line">
+      <div class="paso">
+        <span class="num">1</span>
+        <p>Eliges tu Kit (Eléctrico o Arduino)</p>
+      </div>
+      <div class="paso">
+        <span class="num">2</span>
+        <p>Sigues los manuales digitales sin usar pegamento</p>
+      </div>
+      <div class="paso">
+        <span class="num">3</span>
+        <p>¡Das vida a tu creación con electrónica real!</p>
+      </div>
+    </div>
+  </section>
+</div>
