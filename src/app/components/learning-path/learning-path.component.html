@@ -1,0 +1,66 @@
+<div class="path-container">
+  <h2 class="titulo-seleccion">Selecciona tu nivel de aprendizaje</h2>
+  
+  <div class="cards-container">
+    <div class="kit-card" [class.selected]="kitSeleccionado === 'electrico'" (click)="cambiarKit('electrico')">
+      <div class="card-tag">BÁSICO</div>
+      <div class="card-icon">⚡</div>
+      <h3>Kit Eléctrico</h3>
+      <p class="card-desc">9 armados con instrucciones. ¡Sin pegamento!</p>
+      <span class="card-price">$1,300 MXN</span>
+    </div>
+
+    <div class="kit-card" [class.selected]="kitSeleccionado === 'arduino'" (click)="cambiarKit('arduino')">
+      <div class="card-tag">PRO</div>
+      <div class="card-icon">🤖</div>
+      <h3>Kit Arduino</h3>
+      <p class="card-desc">14 manuales + Programación avanzada.</p>
+      <span class="card-price">$2,200 MXN</span>
+    </div>
+  </div>
+
+  <section class="detalle-kit">
+    <div class="info-principal">
+      <div class="badge-madera">🦴 Huesos de Madera</div>
+      <h3>Detalles del {{ kitSeleccionado | titlecase }}</h3>
+      <p>{{ kitSeleccionado === 'electrico' ? descripciones.electrico.intro : descripciones.arduino.intro }}</p>
+      <p><strong>💡 Lo mejor:</strong> {{ descripciones.electrico.ventaja }}</p>
+    </div>
+
+    <div class="lista-proyectos">
+      <h4>📂 Proyectos incluidos:</h4>
+      <div class="proyectos-tags">
+        <span class="tag-comun" *ngIf="kitSeleccionado === 'electrico' || kitSeleccionado === 'arduino'">🦂 Escorpión</span>
+        <span class="tag-comun" *ngIf="kitSeleccionado === 'electrico' || kitSeleccionado === 'arduino'">💡 Lámpara</span>
+        <span class="tag-comun" *ngIf="kitSeleccionado === 'electrico' || kitSeleccionado === 'arduino'">🏰 Catapulta</span>
+        
+        <ng-container *ngIf="kitSeleccionado === 'arduino'">
+          <span class="tag-arduino" *ngFor="let p of descripciones.arduino.proyectos">🚀 {{ p }}</span>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+  
+  <button class="btn-guia-full" (click)="toggleGuide()">
+    {{ showGuide ? 'CERRAR INVENTARIO' : 'VER TODAS LAS PIEZAS' }}
+  </button>
+
+    <div class="inventory-modal" *ngIf="showGuide">
+    <div class="inventory-section">
+      <h3>🧩 Corte MDF (Común en ambos)</h3>
+      <ul>
+        <li *ngFor="let item of mdfItems">{{ item }}</li>
+      </ul>
+    </div>
+    
+    <div class="inventory-section">
+      <h3>🔌 {{ kitSeleccionado === 'electrico' ? 'Electrónica Básica' : 'Electrónica + Arduino' }}</h3>
+      <ul>
+        <li *ngFor="let item of (kitSeleccionado === 'electrico' ? electronicItems : arduinoItems)">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>

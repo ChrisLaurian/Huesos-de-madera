@@ -1,0 +1,236 @@
+/* --- CONTENEDOR PRINCIPAL --- */
+.path-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.titulo-seleccion {
+  color: #4B4B4B;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* --- TARJETAS DE SELECCIÓN --- */
+.cards-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+.kit-card {
+  background-color: white;
+  border: 2px solid #E5E5E5;
+  border-bottom: 5px solid #E5E5E5;
+  border-radius: 18px;
+  padding: 20px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.kit-card:hover { background-color: #F7F7F7; }
+
+.kit-card.selected {
+  border-color: #D2691E;
+  border-bottom-color: #A0522D;
+  background-color: #FDF4E3;
+}
+
+.card-tag {
+  background: #E8C39E;
+  color: #8B4513;
+  font-size: 0.7rem;
+  font-weight: 900;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.card-icon { font-size: 3rem; margin-bottom: 10px; }
+
+.card-info h3 { margin: 0; font-size: 1.1rem; color: #4B4B4B; }
+
+.card-desc {
+  font-size: 0.85rem;
+  color: #666;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.card-price {
+  color: #D2691E;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.check-mark {
+  position: absolute; top: 10px; right: 10px;
+  background-color: #D2691E; color: white;
+  width: 25px; height: 25px; border-radius: 50%;
+  display: flex; justify-content: center; align-items: center;
+  font-size: 0.8rem;
+}
+
+.kit-card:active {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+}
+
+/* --- PANEL DE DETALLES DEL KIT --- */
+.detalle-kit {
+  background: white;
+  border: 2px solid #E8C39E;
+  border-radius: 20px;
+  padding: 25px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  box-shadow: 0 10px 0 #E8C39E;
+}
+
+.badge-madera {
+  display: inline-block;
+  background: #FDF4E3;
+  color: #D2691E;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+.proyectos-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.tag-comun, .tag-arduino {
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.tag-comun { background: #E5E5E5; color: #4B4B4B; }
+.tag-arduino { background: #D2691E; color: white; }
+
+/* --- BOTÓN DE INVENTARIO (GUÍA) --- */
+.btn-guia-full {
+  width: 100%;
+  padding: 15px;
+  background-color: #4A7C59;
+  color: white;
+  border: none;
+  border-bottom: 5px solid #355E42;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.1s;
+}
+
+.btn-guia-full:active {
+  transform: translateY(5px);
+  border-bottom-width: 0;
+}
+
+/* --- MODAL DE INVENTARIO --- */
+.inventory-modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background-color: #f3ede2;
+  border: 3px solid #e8c39e;
+  border-radius: 15px;
+  padding: 20px;
+  width: 100%;
+  animation: slideDown 0.3s ease-out;
+}
+
+.inventory-section h3 {
+  color: #d2691e;
+  border-bottom: 2px solid #e8c39e;
+  padding-bottom: 5px;
+  font-size: 1rem;
+}
+
+.inventory-section ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.inventory-section li {
+  font-size: 0.85rem;
+  color: #555;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RUTA DE LECCIONES (CÍRCULOS) --- */
+.lessons-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.lesson-node {
+  position: relative;
+  margin-bottom: 50px;
+  cursor: pointer;
+}
+
+.circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  transition: transform 0.2s;
+}
+
+.completed .circle { background-color: #E8C39E; border-bottom: 6px solid #C4A484; }
+.active .circle { background-color: #4A7C59; border-bottom: 6px solid #355E42; transform: scale(1.1); }
+.locked .circle { background-color: #E5E5E5; border-bottom: 6px solid #AFAFAF; color: #999; }
+
+.circle:active {
+  border-bottom-width: 0;
+  transform: translateY(6px);
+}
+
+.lesson-node::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  color: #4B4B4B;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
