@@ -1,0 +1,35 @@
+<div class="contact-container">
+  <div class="header-contacto">
+    <span class="badge-edu">🏫 SECTOR EDUCATIVO</span>
+    <h2>¿Quieres equipar tu escuela con robótica profesional?</h2>
+    <p>
+      Lleva el <strong>Taller de Huesos de Madera</strong> a tus aulas. Nuestros kits son ideales 
+      para laboratorios de tecnología, clubes de ciencia y proyectos STEAM. 
+      Contáctanos para paquetes especiales y capacitación docente.
+    </p>
+  </div>
+
+  <form class="form-madera" (ngSubmit)="enviarFormulario()">
+    <div class="form-group">
+      <label>Nombre del Representante</label>
+      <input type="text" name="nombre" [(ngModel)]="contacto.nombre" placeholder="Ej. Juan Pérez" required>
+    </div>
+
+    <div class="form-group">
+      <label>Nombre de la Institución</label>
+      <input type="text" name="escuela" [(ngModel)]="contacto.escuela" placeholder="Ej. Instituto Tecnológico..." required>
+    </div>
+
+    <div class="form-group">
+      <label>Correo Electrónico</label>
+      <input type="email" name="correo" [(ngModel)]="contacto.correo" placeholder="correo@escuela.edu" required>
+    </div>
+
+    <div class="form-group">
+      <label>¿En qué podemos ayudarte?</label>
+      <textarea name="mensaje" [(ngModel)]="contacto.mensaje" rows="4" placeholder="Cuéntanos cuántos alumnos tienes o qué kit te interesa..."></textarea>
+    </div>
+
+    <button type="submit" class="btn-enviar">ENVIAR SOLICITUD</button>
+  </form>
+</div>

@@ -1,0 +1,90 @@
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.header-contacto {
+  text-align: center;
+}
+
+.badge-edu {
+  background-color: #4A7C59;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.8rem;
+}
+
+.header-contacto h2 {
+  color: #D2691E;
+  font-size: 2.2rem;
+  margin: 15px 0;
+}
+
+.header-contacto p {
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Estilo del Formulario */
+.form-madera {
+  background: white;
+  border: 3px solid #E8C39E;
+  border-bottom: 8px solid #E8C39E;
+  border-radius: 25px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #4B4B4B;
+  font-size: 0.9rem;
+}
+
+.form-group input, .form-group textarea {
+  padding: 12px;
+  border: 2px solid #E5E5E5;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: #D2691E;
+}
+
+.btn-enviar {
+  background-color: #D2691E;
+  color: white;
+  border: none;
+  border-bottom: 5px solid #8B4513;
+  padding: 15px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.1s;
+  margin-top: 10px;
+}
+
+.btn-enviar:active {
+  transform: translateY(4px);
+  border-bottom-width: 0;
+}

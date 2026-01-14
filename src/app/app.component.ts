@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LearningPathComponent } from './components/learning-path/learning-path.component';
 import { AboutComponent } from "./components/about/about.component";
+import { ContactComponent } from './components/contact/contact.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { AboutComponent } from "./components/about/about.component";
     RouterOutlet,
     NavbarComponent,
     LearningPathComponent,
-    AboutComponent
+    AboutComponent,
+    ContactComponent
 ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

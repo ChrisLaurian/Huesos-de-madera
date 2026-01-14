@@ -1,25 +1,31 @@
 .contenedor-principal {
-  margin-top: 70px; /* Espacio para la navbar superior */
+  margin-top: 70px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 40px 20px;
-  min-height: 100vh;
-  background-color: #FDFBF7; /* Crema suave estilo papel/madera */
+  gap: 80px; /* Espacio grande entre el About y la Ruta */
+  padding-bottom: 100px;
 }
 
-.bienvenida {
-  text-align: center;
-  margin-bottom: 50px;
+.divisor-madera {
+  border: 0;
+  height: 4px;
+  background-color: #E8C39E;
+  width: 60%;
+  margin: 0 auto;
+  border-radius: 10px;
+  opacity: 0.5;
 }
 
-.bienvenida h1 {
-  color: #4B4B4B;
-  font-size: 1.8rem;
-  font-weight: 800;
+/* Hacemos que el About se vea un poco más compacto si está en el inicio */
+app-about {
+  width: 100%;
 }
 
-.bienvenida p {
-  color: #777;
-  font-size: 1.1rem;
+html {
+  scroll-behavior: smooth;
+}
+
+/* Evita que el Navbar tape el inicio de la sección al bajar */
+section {
+  scroll-margin-top: 100px;
 }
