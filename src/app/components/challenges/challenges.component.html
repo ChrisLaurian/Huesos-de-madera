@@ -25,3 +25,45 @@
     </div>
   </div>
 </div>
+
+<input type="file" #fileInput style="display: none" accept="image/*">
+
+<div *ngIf="mostrarModal" class="modal-overlay">
+  <div class="modal-content animate-pop">
+    <div class="modal-header">
+      <i class="fas fa-rocket"></i>
+      <h3>Participar en: <span>{{ retoSeleccionado }}</span></h3>
+      <button class="close-x" (click)="mostrarModal = false">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="step-container">
+        <label><span class="step-num">1</span> Sube tu foto a PostImages</label>
+        <div class="link-helper">
+          <a href="https://postimages.org/" target="_blank" class="btn-external">
+            Ir a PostImages <i class="fas fa-external-link-alt"></i>
+          </a>
+          <p class="hint">Copia el "Enlace directo" al finalizar.</p>
+        </div>
+        <input type="text" [(ngModel)]="urlImagenExterna" 
+               placeholder="https://i.postimg.cc/..." class="modern-input">
+      </div>
+
+      <div class="step-container">
+        <label><span class="step-num">2</span> Tu bitácora de construcción</label>
+        <textarea [(ngModel)]="nuevaDescripcion" 
+                  placeholder="¿Cómo lo lograste? Cuéntanos tu proceso creativo..." 
+                  class="modern-textarea"></textarea>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-cancelar" (click)="mostrarModal = false">Tal vez luego</button>
+      <button class="btn-enviar-final" 
+              [disabled]="!urlImagenExterna || !nuevaDescripcion" 
+              (click)="subirAFirebase()">
+        <span>Publicar en el Muro</span> <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+</div>

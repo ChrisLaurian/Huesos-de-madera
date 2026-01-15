@@ -2,7 +2,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "skipDefaultLibCheck": true,
     "baseUrl": "./",
+    "paths": {
+      "@angular/fire": ["node_modules/@angular/fire"],
+      "@angular/fire/*": ["node_modules/@angular/fire/*"]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
