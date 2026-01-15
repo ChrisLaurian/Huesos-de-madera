@@ -1,0 +1,150 @@
+/* 1. Contenedores y Layout General */
+.challenges-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.challenges-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.challenges-header h1 {
+  color: #5d2e0a;
+  font-size: 2.5rem;
+}
+
+/* 2. Banner de Premio (Unificado y con mejor gradiente) */
+.award-banner {
+  background: linear-gradient(135deg, #8b4513 0%, #d2691e 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 20px rgba(139, 69, 19, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+}
+
+/* 3. Filtros Interactivos */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.filter-buttons button {
+  padding: 12px 25px;
+  border: 2px solid #e8c39e;
+  background: white;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #5d2e0a;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-buttons button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.filter-buttons button.active {
+  background: #d2691e;
+  color: white;
+  border-color: #8b4513;
+  transform: scale(1.05);
+}
+
+/* 4. Grid de Desafíos */
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+/* 5. Tarjeta de Desafío (Estilo Limpio - Fondo Blanco) */
+.challenge-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  justify-content: space-between;
+}
+
+.challenge-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(139, 69, 19, 0.1);
+  border-color: #d2691e;
+}
+
+/* 6. Etiquetas y Textos */
+.level-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: #fdf4e3;
+  color: #d2691e;
+  padding: 6px 16px;
+  border-radius: 50px;
+  width: fit-content;
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+.challenge-card h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 1.4rem;
+}
+
+.challenge-card p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+/* 7. Botón de Acción Principal */
+.btn-subir {
+  background: #5d2e0a;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-subir:hover {
+  background: #d2691e;
+  box-shadow: 0 4px 12px rgba(210, 105, 30, 0.3);
+}
+
+/* 8. Adaptabilidad (Mobile) */
+@media (max-width: 600px) {
+  .filter-buttons button {
+    width: 100%;
+  }
+  
+  .challenges-header h1 {
+    font-size: 1.8rem;
+  }
+}

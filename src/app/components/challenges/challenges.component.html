@@ -1,0 +1,27 @@
+<div class="challenges-wrapper">
+  <div class="award-banner">
+    <i class="fas fa-trophy"></i>
+    <span>¡El diseño más creativo podría ser parte de los manuales oficiales!</span>
+  </div>
+
+  <div class="filter-buttons">
+    <button (click)="cambiarFiltro('ensamble')" [class.active]="filtroActual === 'ensamble'">🛠️ Ensamble</button>
+    <button (click)="cambiarFiltro('arduino')" [class.active]="filtroActual === 'arduino'">🤖 Arduino</button>
+    <button (click)="cambiarFiltro('electrico')" [class.active]="filtroActual === 'electrico'">⚡ Eléctrico</button>
+  </div>
+
+  <div class="challenge-grid">
+    <div class="challenge-card" *ngFor="let d of desafiosFiltrados">
+      <div class="card-glow"></div>
+      <span class="level-tag">{{ d.nivel }}</span>
+      <h3>{{ d.titulo }}</h3>
+      <p>{{ d.descripcion }}</p>
+      
+      <div class="upload-zone">
+        <button class="btn-subir" (click)="openUploadModal(d.titulo)">
+          Subir mi propuesta
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
