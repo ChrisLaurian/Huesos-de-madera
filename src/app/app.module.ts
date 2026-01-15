@@ -9,6 +9,7 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ManualsComponent } from './components/manuals/manuals.component';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,8 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     
   
     
+  
+    HomeComponent
   ],
   imports: [
     BrowserModule,
