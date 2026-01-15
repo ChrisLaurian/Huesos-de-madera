@@ -11,11 +11,7 @@ import { ManualsComponent } from "./components/manuals/manuals.component";
   standalone: true,
   imports: [
     RouterOutlet,
-    NavbarComponent,
-    LearningPathComponent,
-    AboutComponent,
-    ContactComponent,
-    ManualsComponent
+    NavbarComponent
 ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
