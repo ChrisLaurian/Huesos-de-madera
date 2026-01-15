@@ -1,0 +1,66 @@
+<div class="manuals-container">
+  <div class="header-manuales">
+    <h2>Biblioteca de Manuales</h2>
+    <p>Selecciona el tipo de instructivo que deseas visualizar.</p>
+  </div>
+
+  <div class="manual-tabs">
+    <button 
+      [class.active]="categoriaSeleccionada === 'mdf'" 
+      (click)="cambiarCategoria('mdf')">
+      🧩 ENSAMBLE MDF
+    </button>
+    <button 
+      [class.active]="categoriaSeleccionada === 'electrico'" 
+      (click)="cambiarCategoria('electrico')">
+      🔌 CIRCUITOS ELÉCTRICOS
+    </button>
+  </div>
+
+  <div class="manuals-grid">
+    <div class="manual-card" *ngFor="let proyecto of manualesFiltrados">
+      
+      <div class="manual-preview">
+        <span class="manual-emoji">
+          {{ categoriaSeleccionada === 'mdf' ? '📦' : '⚡' }}
+        </span>
+      </div>
+
+      <div class="manual-info">
+        <span class="proyecto-id">#{{ proyecto.id }}</span>
+        <h3>{{ proyecto.nombre }}</h3>
+        <p class="tipo-etiqueta">
+          {{ categoriaSeleccionada === 'mdf' ? 'Estructura de Madera' : 'Conexión Electrónica' }}
+        </p>
+        
+        <div class="manual-actions">
+          <button class="btn-ver" (click)="abrirManual(proyecto)">
+            VER ONLINE
+          </button>
+          <a [href]="getRutaArchivo(proyecto)" download class="btn-descargar" title="Descargar PDF">
+            ⬇️
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="mostrarModal" (click)="cerrarManual()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>{{ tituloManual }}</h3>
+      <button class="btn-cerrar" (click)="cerrarManual()">✕</button>
+    </div>
+    <div class="modal-body">
+      <iframe 
+        *ngIf="pdfSeleccionado"
+        [src]="pdfSeleccionado | safeUrl" 
+        width="100%" 
+        height="100%" 
+        style="border: none;">
+      </iframe>
+    </div>
+  </div>
+</div>

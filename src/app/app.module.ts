@@ -7,6 +7,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LearningPathComponent } from './components/learning-path/learning-path.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { ManualsComponent } from './components/manuals/manuals.component';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,10 @@ import { ContactComponent } from './components/contact/contact.component';
     
   
    
+  
+    
+  
+    
   ],
   imports: [
     BrowserModule,
