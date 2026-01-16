@@ -1,0 +1,30 @@
+<div class="gallery-container">
+  <div class="gallery-header">
+    <h2>📸 Galería Huesos de Madera</h2>
+    <div class="tab-switcher">
+      <button [class.active]="tabActual === 'retos'" (click)="cambiarTab('retos')">Creaciones</button>
+      <button [class.active]="tabActual === 'talleres'" (click)="cambiarTab('talleres')">En las Escuelas</button>
+    </div>
+  </div>
+
+  <div *ngIf="tabActual === 'retos'" class="grid-layout animate-fade">
+    <div class="photo-card" *ngFor="let item of retosComunidad$ | async">
+      <div class="badge">{{ item.reto }}</div>
+      <img [src]="item.imagenURL" alt="Proyecto">
+      <div class="card-info">
+        <p>"{{ item.descripcion }}"</p>
+        <span class="date">{{ item.fecha?.toDate() | date:'shortDate' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="tabActual === 'talleres'" class="grid-layout animate-fade">
+    <div class="photo-card admin-card" *ngFor="let foto of fotosTalleres$ | async">
+      <img [src]="foto.imagenURL" alt="Taller escolar">
+      <div class="card-info">
+        <h4>{{ foto.escuela }}</h4>
+        <p>{{ foto.comentario }}</p>
+      </div>
+    </div>
+  </div>
+</div>
