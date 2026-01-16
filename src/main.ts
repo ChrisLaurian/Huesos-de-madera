@@ -10,6 +10,7 @@ import { importProvidersFrom } from '@angular/core';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 
 // Pega aquí tus credenciales de Firebase
 const firebaseConfig = {
@@ -30,7 +31,8 @@ providers: [
     importProvidersFrom(
       provideFirebaseApp(() => initializeApp(firebaseConfig)),
       provideFirestore(() => getFirestore()),
-      provideStorage(() => getStorage())
+      provideStorage(() => getStorage()),
+      provideAuth(() => getAuth())
     )
   ]
 }).catch(err => console.error(err));

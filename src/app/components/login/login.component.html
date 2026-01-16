@@ -1,0 +1,38 @@
+<div class="login-wrapper">
+  <div class="login-card animate-fade-in">
+    <div class="login-header">
+      <div class="icon-circle">
+        <i class="fas fa-lock"></i>
+      </div>
+      <h2>Panel Administrativo</h2>
+      <p>Huesos de Madera</p>
+    </div>
+
+    <form class="login-form" (submit)="$event.preventDefault(); onLogin()">
+      <div class="input-group">
+        <label>Correo Electrónico</label>
+        <div class="input-field">
+          <i class="fas fa-envelope"></i>
+          <input type="email" [(ngModel)]="email" name="email" placeholder="ejemplo@correo.com" required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Contraseña</label>
+        <div class="input-field">
+          <i class="fas fa-key"></i>
+          <input type="password" [(ngModel)]="password" name="password" placeholder="••••••••" required>
+        </div>
+      </div>
+
+<button type="submit" class="btn-login" [disabled]="cargando">
+  <span>{{ cargando ? 'Verificando...' : 'Ingresar' }}</span>
+  <i *ngIf="!cargando" class="fas fa-arrow-right"></i>
+</button>
+    </form>
+    
+    <div class="login-footer">
+      <a routerLink="/" class="back-link">← Volver al inicio</a>
+    </div>
+  </div>
+</div>

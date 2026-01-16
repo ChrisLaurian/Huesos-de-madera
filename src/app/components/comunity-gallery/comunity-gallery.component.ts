@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Firestore, collection, collectionData, query, orderBy } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, query, orderBy, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -22,7 +22,7 @@ export class ComunityGalleryComponent implements OnInit {
   ngOnInit() {
     // 1. Cargar Retos de los usuarios
     const retosRef = collection(this.firestore, 'participacionesDesafios');
-    const qRetos = query(retosRef, orderBy('fecha', 'desc'));
+    const qRetos = query(retosRef, where('estado', '==', 'publicado'), orderBy('fecha', 'desc'));
     this.retosComunidad$ = collectionData(qRetos);
 
     // 2. Cargar Fotos de Talleres (Sección Admin)

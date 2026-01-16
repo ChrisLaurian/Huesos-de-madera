@@ -22,8 +22,14 @@
          class="nav-item">GALERIA</a>
     </nav>
 
-    <div class="nav-perfil">
-      <button class="btn-perfil">MI PERFIL</button>
-    </div>
+<ng-container *ngIf="user$ | async as currentUser; else guestMode">
+      <button routerLink="/admin" class="btn-admin">⚙️ Admin</button>
+      <button (click)="logout()" class="btn-logout">Salir</button>
+    </ng-container>
+    
+    <ng-template #guestMode>
+      <button routerLink="/login" class="btn-login">👤 Iniciar Sesión</button>
+    </ng-template>
+
   </div>
 </header>
