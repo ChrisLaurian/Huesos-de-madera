@@ -23,6 +23,11 @@
     <div class="admin-form">
       <input type="text" [(ngModel)]="nuevaFotoTaller.escuela" placeholder="Nombre de la Escuela">
       <input type="text" [(ngModel)]="nuevaFotoTaller.imagenURL" placeholder="Link de la imagen (Direct link)">
+              <div class="link-helper">
+          <a href="https://postimages.org/" target="_blank" class="btn-external">
+            Ir a PostImages <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
       <textarea [(ngModel)]="nuevaFotoTaller.comentario" placeholder="¿Qué pasó en este taller?"></textarea>
       <button class="btn-guardar" (click)="subirFotoTaller()">Subir a Galería Oficial</button>
     </div>

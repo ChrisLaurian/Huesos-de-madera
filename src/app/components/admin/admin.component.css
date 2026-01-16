@@ -12,3 +12,14 @@
 .admin-form { display: flex; flex-direction: column; gap: 15px; }
 .admin-form input, .admin-form textarea { padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
 .btn-guardar { background: #5d2e0a; color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; }
+
+.btn-external {
+  display: inline-block;
+  text-decoration: none;
+  background: #f0e6dd;
+  color: #5d2e0a;
+  padding: 8px 15px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}

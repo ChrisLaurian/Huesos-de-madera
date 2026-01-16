@@ -1,10 +1,9 @@
-<header class="navbar-superior">
-  <div class="nav-container">
-    <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="cursor: pointer;">
-      <span class="logo-text">HUESOS DE MADERA</span>
-    </div>
+<nav class="navbar">
+  <div class="logo-container" routerLink="/">
+    <span class="logo-text">Huesos de Madera</span>
+  </div>
 
-    <nav class="nav-links">
+  <div class="nav-links">
       <a routerLink="/inicio" 
          routerLinkActive="active-link" 
          class="nav-item">INICIO</a>
@@ -20,16 +19,22 @@
        <a routerLink="/galeria" 
          routerLinkActive="active-link" 
          class="nav-item">GALERIA</a>
-    </nav>
 
-<ng-container *ngIf="user$ | async as currentUser; else guestMode">
-      <button routerLink="/admin" class="btn-admin">⚙️ Admin</button>
-      <button (click)="logout()" class="btn-logout">Salir</button>
-    </ng-container>
-    
-    <ng-template #guestMode>
-      <button routerLink="/login" class="btn-login">👤 Iniciar Sesión</button>
-    </ng-template>
+    <div class="auth-section">
+      <ng-container *ngIf="user$ | async as user; else guestMode">
+        <button routerLink="/admin" class="nav-btn btn-admin">
+          <i class="fas fa-user-shield"></i> Admin
+        </button>
+        <button (click)="logout()" class="nav-btn btn-logout">
+          <i class="fas fa-sign-out-alt"></i> Salir
+        </button>
+      </ng-container>
 
+      <ng-template #guestMode>
+        <button routerLink="/login" class="nav-btn btn-login">
+          <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+        </button>
+      </ng-template>
+    </div>
   </div>
-</header>
+</nav>
