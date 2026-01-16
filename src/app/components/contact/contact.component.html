@@ -30,6 +30,8 @@
       <textarea name="mensaje" [(ngModel)]="contacto.mensaje" rows="4" placeholder="Cuéntanos cuántos alumnos tienes o qué kit te interesa..."></textarea>
     </div>
 
-    <button type="submit" class="btn-enviar">ENVIAR SOLICITUD</button>
+    <button type="submit" [disabled]="cargando" (click)="enviarFormulario()" class="btn-enviar">
+  {{ cargando ? 'ENVIANDO...' : 'ENVIAR MENSAJE' }}
+</button>
   </form>
 </div>
