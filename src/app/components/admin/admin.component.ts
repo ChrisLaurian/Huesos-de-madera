@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Firestore, collection, collectionData, doc, updateDoc, deleteDoc, query, where, addDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { docData } from 'rxfire/firestore';
 
 @Component({
   selector: 'app-admin',
@@ -18,6 +19,7 @@ export class AdminComponent implements OnInit {
   retosPendientes$: Observable<any[]> | undefined;
   retosPublicados$: Observable<any[]> | undefined;
   fotosTalleres$: Observable<any[]> | undefined;
+  vistas$: Observable<any> | undefined;
 
   // Formulario para subir fotos de talleres
   nuevaFotoTaller = {
@@ -29,7 +31,9 @@ export class AdminComponent implements OnInit {
 ngOnInit() {
     const pRef = collection(this.firestore, 'participacionesDesafios');
     const tRef = collection(this.firestore, 'fotosTalleres');
+    const statsRef = doc(this.firestore, 'stats', 'contadorPrincipal');
 
+    this.vistas$ = docData(statsRef);
     // 1. Pendientes
     const qPendientes = query(pRef, where('estado', '==', 'pendiente'));
     this.retosPendientes$ = collectionData(qPendientes, { idField: 'id' });

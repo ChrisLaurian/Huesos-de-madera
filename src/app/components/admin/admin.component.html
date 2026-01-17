@@ -1,4 +1,13 @@
 <div class="admin-container">
+  <div class="stats-banner" *ngIf="vistas$ | async as stats">
+    <div class="stat-card">
+      <i class="fas fa-eye"></i>
+      <div class="stat-info">
+        <span class="stat-value">{{ stats.vistasTotales }}</span>
+        <span class="stat-label">Visitas Totales</span>
+      </div>
+    </div>
+  </div>
   <h1>🛠️ Panel de Control - Huesos de Madera</h1>
 
   <section class="admin-section">

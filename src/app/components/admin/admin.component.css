@@ -100,3 +100,41 @@
   color: #999;
   font-style: italic;
 }
+
+.stats-banner {
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #5d2e0a 0%, #8d6e63 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 10px 20px rgba(93, 46, 10, 0.2);
+}
+
+.stat-card i {
+  font-size: 2.5rem;
+  opacity: 0.8;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
