@@ -15,18 +15,18 @@ export class ManualsComponent {
   pdfSeleccionado: string | null = null;
   tituloManual: string = '';
 
-  proyectos = [
-    { id: '01', nombre: 'Lampara LED', electrico: true, mdf: true },
-    { id: '02', nombre: 'Perro', electrico: true, mdf: true },
-    { id: '03', nombre: 'Cangrejo', electrico: true, mdf: true },
-    { id: '04', nombre: 'Carro Mecanico', electrico: true, mdf: true },
-    { id: '05', nombre: 'Carro electrico', electrico: true, mdf: true },
-    { id: '06', nombre: 'Escorpion', electrico: true, mdf: true },
-    { id: '07', nombre: 'Reactor de Iron Man', electrico: true, mdf: true },
-    { id: '08', nombre: 'Semaforo', electrico: true, mdf: true },
-    { id: '09', nombre: 'Catapulta', electrico: false, mdf: true },
-    { id: '10', nombre: 'Virus', electrico: true, mdf: true }
-  ];
+proyectos = [
+  { id: '01', nombre: 'Lampara LED', electrico: true, mdf: true, emoji: '💡' },
+  { id: '02', nombre: 'Perro', electrico: true, mdf: true, emoji: '🐶' },
+  { id: '03', nombre: 'Cangrejo', electrico: true, mdf: true, emoji: '🦀' },
+  { id: '04', nombre: 'Carro Mecánico', electrico: true, mdf: true, emoji: '⚙️' },
+  { id: '05', nombre: 'Carro Eléctrico', electrico: true, mdf: true, emoji: '🏎️' },
+  { id: '06', nombre: 'Escorpión', electrico: true, mdf: true, emoji: '🦂' },
+  { id: '07', nombre: 'Reactor de Iron Man', electrico: true, mdf: true, emoji: '☢️' },
+  { id: '08', nombre: 'Semáforo', electrico: true, mdf: true, emoji: '🚦' },
+  { id: '09', nombre: 'Catapulta', electrico: false, mdf: true, emoji: '🏹' },
+  { id: '10', nombre: 'Virus', electrico: true, mdf: true, emoji: '🦠' }
+];
 
   get manualesFiltrados() {
     return this.categoriaSeleccionada === 'mdf' 

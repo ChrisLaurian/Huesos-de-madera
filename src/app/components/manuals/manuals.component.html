@@ -22,7 +22,10 @@
       
       <div class="manual-preview">
         <span class="manual-emoji">
-          {{ categoriaSeleccionada === 'mdf' ? '📦' : '⚡' }}
+          {{ proyecto.emoji }}
+          <span class="badge-electrico" *ngIf="categoriaSeleccionada === 'electrico'">
+      ⚡
+    </span>
         </span>
       </div>
 
