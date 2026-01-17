@@ -18,7 +18,7 @@
       <p>{{ d.descripcion }}</p>
       
       <div class="upload-zone">
-        <button class="btn-subir" (click)="openUploadModal(d.titulo)">
+        <button class="btn-enviar-final" (click)="openUploadModal(d.titulo)">
           Subir mi propuesta
         </button>
       </div>
@@ -36,26 +36,37 @@
       <button class="close-x" (click)="mostrarModal = false">&times;</button>
     </div>
 
-    <div class="modal-body">
-      <div class="step-container">
-        <label><span class="step-num">1</span> Sube tu foto a PostImages</label>
-        <div class="link-helper">
-          <a href="https://postimages.org/" target="_blank" class="btn-external">
-            Ir a PostImages <i class="fas fa-external-link-alt"></i>
-          </a>
-          <p class="hint">Copia el "Enlace directo" al finalizar.</p>
-        </div>
-        <input type="text" [(ngModel)]="urlImagenExterna" 
-               placeholder="https://i.postimg.cc/..." class="modern-input">
-      </div>
-
-      <div class="step-container">
-        <label><span class="step-num">2</span> Tu bitácora de construcción</label>
-        <textarea [(ngModel)]="nuevaDescripcion" 
-                  placeholder="¿Cómo lo lograste? Cuéntanos tu proceso creativo..." 
-                  class="modern-textarea"></textarea>
-      </div>
+<div class="modal-body">
+  <div class="step-container">
+    <label><span class="step-num">1</span> Sube tu foto a PostImages</label>
+    
+    <div class="guia-visual-link">
+      <p><i class="fas fa-info-circle"></i> Sigue estos pasos para que tu imagen se vea:</p>
+      <ul>
+        <li>Pulsa el botón azul y sube tu foto.</li>
+        <li>Busca la fila que dice <strong>"Enlace directo"</strong>.</li>
+        <li>Ese es el que debes pegar aquí abajo.</li>
+      </ul>
     </div>
+
+    <div class="link-helper">
+      <a href="https://postimages.org/" target="_blank" class="btn-external">
+        Ir a PostImages <i class="fas fa-external-link-alt"></i>
+      </a>
+    </div>
+
+    <input type="text" [(ngModel)]="urlImagenExterna" 
+           placeholder="Pega aquí el enlace directo (ej: https://i.postimg.cc/imagen.png)" 
+           class="modern-input">
+  </div>
+
+  <div class="step-container">
+    <label><span class="step-num">2</span> Tu bitácora de construcción</label>
+    <textarea [(ngModel)]="nuevaDescripcion" 
+              placeholder="¿Cómo lo lograste? Cuéntanos tu proceso creativo..." 
+              class="modern-textarea"></textarea>
+  </div>
+</div>
 
     <div class="modal-footer">
       <button class="btn-cancelar" (click)="mostrarModal = false">Tal vez luego</button>

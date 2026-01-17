@@ -16,6 +16,8 @@ export class AdminComponent implements OnInit {
 
   // Participaciones de retos pendientes
   retosPendientes$: Observable<any[]> | undefined;
+  retosPublicados$: Observable<any[]> | undefined;
+  fotosTalleres$: Observable<any[]> | undefined;
 
   // Formulario para subir fotos de talleres
   nuevaFotoTaller = {
@@ -24,12 +26,21 @@ export class AdminComponent implements OnInit {
     imagenURL: ''
   };
 
-  ngOnInit() {
+ngOnInit() {
     const pRef = collection(this.firestore, 'participacionesDesafios');
-    // Solo traemos los que están en estado 'pendiente'
-    const q = query(pRef, where('estado', '==', 'pendiente'));
-    this.retosPendientes$ = collectionData(q, { idField: 'id' });
-  }
+    const tRef = collection(this.firestore, 'fotosTalleres');
+
+    // 1. Pendientes
+    const qPendientes = query(pRef, where('estado', '==', 'pendiente'));
+    this.retosPendientes$ = collectionData(qPendientes, { idField: 'id' });
+
+    // 2. Ya publicados (para poder borrarlos o editarlos)
+    const qPublicados = query(pRef, where('estado', '==', 'publicado'));
+    this.retosPublicados$ = collectionData(qPublicados, { idField: 'id' });
+
+    // 3. Galería de talleres
+    this.fotosTalleres$ = collectionData(tRef, { idField: 'id' });
+  }  
 
   // APROBAR RETO
   async aprobarReto(id: string) {
@@ -58,5 +69,19 @@ export class AdminComponent implements OnInit {
       alert("¡Foto de taller añadida con éxito!");
       this.nuevaFotoTaller = { escuela: '', comentario: '', imagenURL: '' };
     } catch (e) { console.error(e); }
+  }
+
+  async borrarPublicacion(id: string) {
+    if(confirm("¿Deseas quitar esta foto de la galería pública?")) {
+      const docRef = doc(this.firestore, 'participacionesDesafios', id);
+      await deleteDoc(docRef);
+    }
+  }
+
+  async borrarFotoTaller(id: string) {
+    if(confirm("¿Eliminar esta foto de taller?")) {
+      const docRef = doc(this.firestore, 'fotosTalleres', id);
+      await deleteDoc(docRef);
+    }
   }
 }

@@ -15,6 +15,7 @@
           <button class="btn-borrar" (click)='rechazarReto(p.id)'>Eliminar</button>
         </div>
       </div>
+      <p *ngIf="(retosPendientes$ | async)?.length === 0" class="empty-msg">No hay retos por aprobar.</p>
     </div>
   </section>
 
@@ -23,13 +24,51 @@
     <div class="admin-form">
       <input type="text" [(ngModel)]="nuevaFotoTaller.escuela" placeholder="Nombre de la Escuela">
       <input type="text" [(ngModel)]="nuevaFotoTaller.imagenURL" placeholder="Link de la imagen (Direct link)">
-              <div class="link-helper">
-          <a href="https://postimages.org/" target="_blank" class="btn-external">
-            Ir a PostImages <i class="fas fa-external-link-alt"></i>
-          </a>
-        </div>
+      <div class="link-helper">
+        <a href="https://postimages.org/" target="_blank" class="btn-external">
+          Subir a PostImages <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
       <textarea [(ngModel)]="nuevaFotoTaller.comentario" placeholder="¿Qué pasó en este taller?"></textarea>
       <button class="btn-guardar" (click)="subirFotoTaller()">Subir a Galería Oficial</button>
+    </div>
+  </section>
+
+  <section class="admin-section">
+    <h2>📂 Gestionar Contenido Publicado</h2>
+    
+    <div class="tabs-content">
+      <h3>Retos en Galería Pública</h3>
+      <div class="admin-list">
+        <div *ngFor="let item of retosPublicados$ | async" class="admin-item-card">
+          <img [src]="item.imagenURL" alt="preview">
+          <div class="info">
+            <h3>{{ item.reto }}</h3>
+            <p>{{ item.escuela }}</p>
+          </div>
+          <div class="admin-actions">
+            <button class="btn-delete" (click)="borrarPublicacion(item.id)">
+              <i class="fas fa-trash">X</i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 20px;">Fotos de Talleres</h3>
+      <div class="admin-list">
+        <div *ngFor="let taller of fotosTalleres$ | async" class="admin-item-card">
+          <img [src]="taller.imagenURL" alt="preview">
+          <div class="info">
+            <h3>{{ taller.escuela }}</h3>
+            <p>{{ taller.comentario }}</p>
+          </div>
+          <div class="admin-actions">
+            <button class="btn-delete" (click)="borrarFotoTaller(taller.id)">
+              <i class="fas fa-trash">X</i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </div>
