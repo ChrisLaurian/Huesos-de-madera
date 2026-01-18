@@ -3,36 +3,33 @@
     <span class="logo-text">Huesos de Madera</span>
   </div>
 
-  <div class="nav-links">
-      <a routerLink="/inicio" 
-         routerLinkActive="active-link" 
-         class="nav-item">INICIO</a>
+  <button class="menu-toggle" (click)="menuAbierto = !menuAbierto" [class.open]="menuAbierto">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-      <a routerLink="/manuales" 
-         routerLinkActive="active-link" 
-         class="nav-item">MANUALES</a>
-
-      <a routerLink="/desafios" 
-         routerLinkActive="active-link" 
-         class="nav-item">DESAFÍOS</a>
-         
-       <a routerLink="/galeria" 
-         routerLinkActive="active-link" 
-         class="nav-item">GALERIA</a>
+  <div class="nav-container" [class.active]="menuAbierto">
+    <div class="nav-links">
+      <a routerLink="/inicio" routerLinkActive="active-link" class="nav-item" (click)="menuAbierto = false">INICIO</a>
+      <a routerLink="/manuales" routerLinkActive="active-link" class="nav-item" (click)="menuAbierto = false">MANUALES</a>
+      <a routerLink="/desafios" routerLinkActive="active-link" class="nav-item" (click)="menuAbierto = false">DESAFÍOS</a>
+      <a routerLink="/galeria" routerLinkActive="active-link" class="nav-item" (click)="menuAbierto = false">GALERIA</a>
+    </div>
 
     <div class="auth-section">
       <ng-container *ngIf="user$ | async as user; else guestMode">
-        <button routerLink="/admin" class="nav-btn btn-admin">
-          <i class="fas fa-user-shield"></i> Admin
+        <button routerLink="/admin" class="nav-btn btn-admin" (click)="menuAbierto = false">
+          <i class="fas fa-user-shield"></i> <span>Admin</span>
         </button>
-        <button (click)="logout()" class="nav-btn btn-logout">
-          <i class="fas fa-sign-out-alt"></i> Salir
+        <button (click)="logout(); menuAbierto = false" class="nav-btn btn-logout">
+          <i class="fas fa-sign-out-alt"></i> <span>Salir</span>
         </button>
       </ng-container>
 
       <ng-template #guestMode>
-        <button routerLink="/login" class="nav-btn btn-login">
-          <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+        <button routerLink="/login" class="nav-btn btn-login" (click)="menuAbierto = false">
+          <i class="fas fa-sign-in-alt"></i> <span>Iniciar Sesión</span>
         </button>
       </ng-template>
     </div>

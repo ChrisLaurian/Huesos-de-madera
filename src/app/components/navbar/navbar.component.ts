@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  menuAbierto = false;
   private auth: Auth = inject(Auth); // Inyectamos el servicio de Auth
   private router = inject(Router)
   // Aquí está la corrección: pasamos 'this.auth' como argumento
