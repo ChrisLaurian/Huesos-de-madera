@@ -1,4 +1,5 @@
 <div class="manuals-container">
+
   <div class="header-manuales">
     <h2>Biblioteca de Manuales</h2>
     <p>Selecciona el tipo de instructivo que deseas visualizar.</p>
@@ -21,12 +22,12 @@
     <div class="manual-card" *ngFor="let proyecto of manualesFiltrados">
       
       <div class="manual-preview">
-        <span class="manual-emoji">
-          {{ proyecto.emoji }}
+        <div class="icon-wrapper">
+          <span class="manual-emoji">{{ proyecto.emoji }}</span>
           <span class="badge-electrico" *ngIf="categoriaSeleccionada === 'electrico'">
-      ⚡
-    </span>
-        </span>
+            ⚡
+          </span>
+        </div>
       </div>
 
       <div class="manual-info">
@@ -61,8 +62,7 @@
         *ngIf="pdfSeleccionado"
         [src]="pdfSeleccionado | safeUrl" 
         width="100%" 
-        height="100%" 
-        style="border: none;">
+        height="100%">
       </iframe>
     </div>
   </div>

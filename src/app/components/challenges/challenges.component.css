@@ -1,22 +1,33 @@
-/* 1. Contenedores y Layout General */
+/* --- FONDO FIJO Y TRIÁNGULOS --- */
+.challenges-container {
+  position: relative;
+  min-height: 100vh;
+  background-color: #fdfaf7;
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgba(232, 195, 158, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 20% 80%, rgba(93, 46, 10, 0.05) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+.fixed-pattern {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 15l5 8h-10z' fill='%235d2e0a' fill-opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- LAYOUT GENERAL --- */
 .challenges-wrapper {
+  position: relative;
+  z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
   font-family: 'Segoe UI', Roboto, sans-serif;
 }
 
-.challenges-header {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.challenges-header h1 {
-  color: #5d2e0a;
-  font-size: 2.5rem;
-}
-
-/* 2. Banner de Premio */
+/* --- BANNER DE PREMIO --- */
 .award-banner {
   background: linear-gradient(135deg, #8b4513 0%, #d2691e 100%);
   color: white;
@@ -33,7 +44,7 @@
   font-weight: bold;
 }
 
-/* 3. Filtros Interactivos */
+/* --- FILTROS --- */
 .filter-buttons {
   display: flex;
   justify-content: center;
@@ -60,7 +71,7 @@
   transform: scale(1.05);
 }
 
-/* 4. Grid y Tarjetas de Desafío */
+/* --- GRID Y TARJETAS --- */
 .challenge-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -100,7 +111,7 @@
   font-weight: 800;
 }
 
-/* 5. MODAL (Estructura Unificada) */
+/* --- MODAL --- */
 .modal-overlay {
   position: fixed;
   top: 0; left: 0;
@@ -113,22 +124,19 @@
   z-index: 1000;
 }
 
-/* --- MODAL CONTENT (Ajustado) --- */
 .modal-content {
   background: #fffdfa;
-  width: 95%; /* Un poco más ancho en móviles */
+  width: 95%;
   max-width: 500px;
-  max-height: 90vh; /* Se adapta al alto de la pantalla */
+  max-height: 90vh;
   border-radius: 24px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  padding: 0;
   display: flex;
-  flex-direction: column; /* Para fijar header y footer */
-  overflow: hidden; /* Evita que el contenido se salga de los bordes redondeados */
+  flex-direction: column;
+  overflow: hidden;
   border: 1px solid #e8c39e;
 }
 
-/* Animación Pop */
 .animate-pop {
   animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -138,12 +146,12 @@
   to { opacity: 1; transform: scale(1); }
 }
 
-/* 6. Componentes Internos del Modal */
 .modal-header {
   background: #5d2e0a;
   color: white;
   padding: 25px;
   text-align: center;
+  position: relative;
 }
 
 .modal-header h3 span { color: #e8c39e; display: block; font-size: 1rem; }
@@ -155,21 +163,14 @@
   color: white; font-size: 1.5rem; cursor: pointer;
 }
 
-/* --- CUERPO DEL MODAL (Con Scroll Invisible) --- */
 .modal-body { 
   padding: 30px;
-  overflow-y: auto; /* Permite scroll solo aquí adentro */
-  flex-grow: 1; /* Toma el espacio disponible entre header y footer */
-  
-  /* Ocultar barra de scroll en Chrome, Safari y Opera */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* Ocultar barra de scroll en Firefox e IE */
+  overflow-y: auto;
+  flex-grow: 1;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+.modal-body::-webkit-scrollbar { display: none; }
 
 .guia-visual-link {
   background: #fff9db;
@@ -195,13 +196,13 @@
   font-size: 0.8rem; font-weight: bold; margin-right: 8px;
 }
 
-/* 7. Inputs y Botones Finales */
 .modern-input, .modern-textarea {
-  width: 90%;
+  width: 100%;
   padding: 12px 15px;
   border: 2px solid #eee;
   border-radius: 12px;
   margin-top: 10px;
+  box-sizing: border-box; /* Asegura que no se salgan del modal */
   transition: all 0.3s;
 }
 
@@ -242,29 +243,20 @@
   filter: brightness(1.1);
 }
 
-.btn-enviar-final:active {
-  transform: translateY(1px);
-}
-
 .btn-cancelar {
   flex: 1;
   background: transparent;
-  color: #8d6e63; /* Color café suave */
-  border: 2px solid #e8c39e; /* Borde color madera clara */
+  color: #8d6e63;
+  border: 2px solid #e8c39e;
   padding: 14px;
   border-radius: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: inherit;
 }
 
 .btn-cancelar:hover {
-  background: #fdf4e3; /* Fondo crema muy suave al pasar el mouse */
-  color: #5d2e0a;    /* Café más oscuro */
+  background: #fdf4e3;
+  color: #5d2e0a;
   border-color: #d2691e;
-}
-
-.btn-cancelar:active {
-  transform: scale(0.98);
 }

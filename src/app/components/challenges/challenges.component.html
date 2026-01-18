@@ -1,80 +1,82 @@
-<div class="challenges-wrapper">
-  <div class="award-banner">
-    <i class="fas fa-trophy"></i>
-    <span>¡El diseño más creativo podría ser parte de los manuales oficiales!</span>
-  </div>
+<div class="challenges-container">
+  <div class="fixed-pattern"></div>
 
-  <div class="filter-buttons">
-    <button (click)="cambiarFiltro('ensamble')" [class.active]="filtroActual === 'ensamble'">🛠️ Ensamble</button>
-    <button (click)="cambiarFiltro('arduino')" [class.active]="filtroActual === 'arduino'">🤖 Arduino</button>
-    <button (click)="cambiarFiltro('electrico')" [class.active]="filtroActual === 'electrico'">⚡ Eléctrico</button>
-  </div>
+  <div class="challenges-wrapper">
+    <div class="award-banner">
+      <i class="fas fa-trophy"></i>
+      <span>¡El diseño más creativo podría ser parte de los manuales oficiales!</span>
+    </div>
 
-  <div class="challenge-grid">
-    <div class="challenge-card" *ngFor="let d of desafiosFiltrados">
-      <div class="card-glow"></div>
-      <span class="level-tag">{{ d.nivel }}</span>
-      <h3>{{ d.titulo }}</h3>
-      <p>{{ d.descripcion }}</p>
-      
-      <div class="upload-zone">
-        <button class="btn-enviar-final" (click)="openUploadModal(d.titulo)">
-          Subir mi propuesta
-        </button>
+    <div class="filter-buttons">
+      <button (click)="cambiarFiltro('ensamble')" [class.active]="filtroActual === 'ensamble'">🛠️ Ensamble</button>
+      <button (click)="cambiarFiltro('arduino')" [class.active]="filtroActual === 'arduino'">🤖 Arduino</button>
+      <button (click)="cambiarFiltro('electrico')" [class.active]="filtroActual === 'electrico'">⚡ Eléctrico</button>
+    </div>
+
+    <div class="challenge-grid">
+      <div class="challenge-card" *ngFor="let d of desafiosFiltrados">
+        <div class="card-glow"></div>
+        <span class="level-tag">{{ d.nivel }}</span>
+        <h3>{{ d.titulo }}</h3>
+        <p>{{ d.descripcion }}</p>
+        
+        <div class="upload-zone">
+          <button class="btn-enviar-final" (click)="openUploadModal(d.titulo)">
+            Subir mi propuesta
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<input type="file" #fileInput style="display: none" accept="image/*">
+  <div *ngIf="mostrarModal" class="modal-overlay">
+    <div class="modal-content animate-pop">
+      <div class="modal-header">
+        <i class="fas fa-rocket"></i>
+        <h3>Participar en: <span>{{ retoSeleccionado }}</span></h3>
+        <button class="close-x" (click)="mostrarModal = false">&times;</button>
+      </div>
 
-<div *ngIf="mostrarModal" class="modal-overlay">
-  <div class="modal-content animate-pop">
-    <div class="modal-header">
-      <i class="fas fa-rocket"></i>
-      <h3>Participar en: <span>{{ retoSeleccionado }}</span></h3>
-      <button class="close-x" (click)="mostrarModal = false">&times;</button>
-    </div>
+      <div class="modal-body">
+        <div class="step-container">
+          <label><span class="step-num">1</span> Sube tu foto a PostImages</label>
+          
+          <div class="guia-visual-link">
+            <p><i class="fas fa-info-circle"></i> Sigue estos pasos para que tu imagen se vea:</p>
+            <ul>
+              <li>Pulsa el botón azul y sube tu foto.</li>
+              <li>Busca la fila que dice <strong>"Enlace directo"</strong>.</li>
+              <li>Ese es el que debes pegar aquí abajo.</li>
+            </ul>
+          </div>
 
-<div class="modal-body">
-  <div class="step-container">
-    <label><span class="step-num">1</span> Sube tu foto a PostImages</label>
-    
-    <div class="guia-visual-link">
-      <p><i class="fas fa-info-circle"></i> Sigue estos pasos para que tu imagen se vea:</p>
-      <ul>
-        <li>Pulsa el botón azul y sube tu foto.</li>
-        <li>Busca la fila que dice <strong>"Enlace directo"</strong>.</li>
-        <li>Ese es el que debes pegar aquí abajo.</li>
-      </ul>
-    </div>
+          <div class="link-helper">
+            <a href="https://postimages.org/" target="_blank" class="btn-external">
+              Ir a PostImages <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
 
-    <div class="link-helper">
-      <a href="https://postimages.org/" target="_blank" class="btn-external">
-        Ir a PostImages <i class="fas fa-external-link-alt"></i>
-      </a>
-    </div>
+          <input type="text" [(ngModel)]="urlImagenExterna" 
+                 placeholder="Pega aquí el enlace directo (ej: https://i.postimg.cc/imagen.png)" 
+                 class="modern-input">
+        </div>
 
-    <input type="text" [(ngModel)]="urlImagenExterna" 
-           placeholder="Pega aquí el enlace directo (ej: https://i.postimg.cc/imagen.png)" 
-           class="modern-input">
-  </div>
+        <div class="step-container">
+          <label><span class="step-num">2</span> Tu bitácora de construcción</label>
+          <textarea [(ngModel)]="nuevaDescripcion" 
+                    placeholder="¿Cómo lo lograste? Cuéntanos tu proceso creativo..." 
+                    class="modern-textarea"></textarea>
+        </div>
+      </div>
 
-  <div class="step-container">
-    <label><span class="step-num">2</span> Tu bitácora de construcción</label>
-    <textarea [(ngModel)]="nuevaDescripcion" 
-              placeholder="¿Cómo lo lograste? Cuéntanos tu proceso creativo..." 
-              class="modern-textarea"></textarea>
-  </div>
-</div>
-
-    <div class="modal-footer">
-      <button class="btn-cancelar" (click)="mostrarModal = false">Tal vez luego</button>
-      <button class="btn-enviar-final" 
-              [disabled]="!urlImagenExterna || !nuevaDescripcion" 
-              (click)="subirAFirebase()">
-        <span>Publicar en el Muro</span> <i class="fas fa-paper-plane"></i>
-      </button>
+      <div class="modal-footer">
+        <button class="btn-cancelar" (click)="mostrarModal = false">Tal vez luego</button>
+        <button class="btn-enviar-final" 
+                [disabled]="!urlImagenExterna || !nuevaDescripcion" 
+                (click)="subirAFirebase()">
+          <span>Publicar en el Muro</span> <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
     </div>
   </div>
 </div>

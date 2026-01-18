@@ -1,0 +1,55 @@
+/* --- CONTENEDOR RAIZ DEL HOME --- */
+.home-container {
+  position: relative;
+  min-height: 100vh;
+  /* Fondo base crema con degradado sutil */
+  background-color: #fdfaf7;
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgba(232, 195, 158, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 20% 80%, rgba(93, 46, 10, 0.05) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* --- PATRÓN DE TRIÁNGULOS ESTÁTICOS --- */
+.fixed-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* CAMBIO: Sube el z-index a 99 */
+  z-index: 1; 
+  /* CAMBIO: Aumenta la opacidad de 0.04 a 0.1 para confirmar que se vean */
+  background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 15l5 8h-10z' fill='%235d2e0a' fill-opacity='0.1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  /* ESTO ES VITAL: Permite que el mouse atraviese los triángulos y toque los botones */
+  pointer-events: none; 
+
+}
+
+/* --- LAYOUT DEL CONTENIDO --- */
+.contenedor-principal {
+  position: relative;
+  z-index: 1; /* Por encima de los triángulos */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: transparent;
+}
+
+section {
+  padding: 60px 0;
+  /* Aseguramos que las secciones no tengan fondos sólidos que tapen los triángulos */
+  background: transparent;
+}
+
+/* --- DIVISOR DE MADERA --- */
+.divisor-madera {
+  border: none;
+  height: 8px;
+  background: linear-gradient(90deg, transparent, #e8c39e, transparent);
+  border-radius: 50%;
+  margin: 40px auto;
+  width: 80%;
+  opacity: 0.6;
+}
