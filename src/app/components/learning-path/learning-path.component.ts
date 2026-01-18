@@ -29,7 +29,7 @@ export class LearningPathComponent {
   ];
 
   arduinoItems = [
-    'Arduino Uno', 'Fotoresistennciass (x4)', 'Sensor Ultrasonico',
+    'Arduino Uno', 'Fotoresistenncias (x4)', 'Sensor Ultrasonico',
     'Puente H', 'Sensor de Movimiento', 'Sesor de Temperatura (x2)',
     'Sensor Infrarrojo (x2)', 'Servo MG90 (x3)', 'Modulo Bluetooth',
     'Modulo Camara VGA','Pila 9v', 'Broche Bateria', 'Leds(x100)', 

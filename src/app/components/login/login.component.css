@@ -52,7 +52,7 @@
 .icon-circle {
   width: 60px;
   height: 60px;
-  background: #5d2e0a;
+  
   color: #e8c39e;
   border-radius: 50%;
   display: flex;
@@ -60,6 +60,12 @@
   align-items: center;
   margin: 0 auto 15px;
   font-size: 1.5rem;
+}
+
+.icon-circle img {
+  width: 9.5em;
+  height: 9.5em;
+  filter: invert(18%) sepia(85%) saturate(1257%) hue-rotate(345deg) brightness(88%) contrast(92%); 
 }
 
 .login-header h2 {
