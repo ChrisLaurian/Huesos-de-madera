@@ -260,3 +260,38 @@
   color: #5d2e0a;
   border-color: #d2691e;
 }
+
+/* --- AJUSTES RESPONSIVOS CHALLENGES --- */
+@media (max-width: 850px) {
+  .challenges-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+}
+
+/* El Modal es crítico */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 95% !important; /* Casi todo el ancho del celular */
+    padding: 20px;
+    margin: 10px auto;
+    border-radius: 20px;
+  }
+
+  .modal-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .form-group input, .form-group textarea {
+    font-size: 16px; /* Evita que iOS haga zoom automático al enfocar */
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-submit, .btn-cancel {
+    width: 100%;
+  }
+}
